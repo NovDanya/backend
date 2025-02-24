@@ -5,49 +5,75 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
+<style>
+    body {
+        margin: 50px 50px;
+        background-color: grey;
+    }
+
+    figure {
+        margin: 0;
+    }
+
+    figure:not(:last-child) {
+        margin-bottom: 50px;
+    }
+
+    img {
+        max-width: 100%;
+    }
+
+    figcaption {
+        margin-bottom: 5px;
+        font-size: 32px;
+        color: rgb(0, 255, 213);
+    }
+
+    div {
+        font-size: 26px;
+        color: rgb(157, 255, 0);
+    }
+</style>
 <body>
-    <figure style="margin-bottom: 50px;">
-        <img src="putty.PNG" alt="">
-        <figcaption style="font-size: 22px;">Подключение через PUTTY к серверу</figcaption>
-    </figure>
-    <figure style="margin-bottom: 50px;">
-        <img src="vhod.PNG" alt="">
-        <figcaption style="font-size: 22px;">Вход на сервер под своим логином и паролем</figcaption>
-    </figure>
-    <figure style="margin-bottom: 50px;">
-        <img src="ping.PNG" alt="">
-        <figcaption style="font-size: 24px;">ping kubsu.ru</figcaption>
-        <div style="font-size: 32px;">ping проверяет, работает ли соединение с другим устройством в сети, и как быстро оно отвечает</div>
-    </figure>
-    <figure style="margin-bottom: 50px;">
-        <img src="typeA.PNG" alt="">
-        <figcaption style="font-size: 24px;">nslookup -type=A kubsu.ru</figcaption>
-        <div style="font-size: 32px;">ping проверяет, работает ли соединение с другим устройством в сети, и как быстро оно отвечает</div>
-    </figure>
-    <figure style="margin-bottom: 50px;">
-        <img src="typeMX.PNG" alt="">
-        <figcaption style="font-size: 24px;">nslookup -type=MX kubsu.ru</figcaption>
-        <div style="font-size: 32px;">ping проверяет, работает ли соединение с другим устройством в сети, и как быстро оно отвечает</div>
-    </figure>
-    <figure style="margin-bottom: 50px;">
-        <img src="typeAdev.PNG" alt="">
-        <figcaption style="font-size: 24px;">nslookup -type=A kubsu-dev.ru</figcaption>
-        <div style="font-size: 32px;">ping проверяет, работает ли соединение с другим устройством в сети, и как быстро оно отвечает</div>
-    </figure>
-    <figure style="margin-bottom: 50px;">
-        <img src="typeMXdev.PNG" alt="">
-        <figcaption style="font-size: 24px;">nslookup -type=MX kubsu-dev.ru</figcaption>
-        <div style="font-size: 32px;">ping проверяет, работает ли соединение с другим устройством в сети, и как быстро оно отвечает</div>
-    </figure>
-    <figure style="margin-bottom: 50px;">
-        <img src="whois.PNG" alt="">
-        <figcaption style="font-size: 24px;">whois kubsu.ru</figcaption>
-        <div style="font-size: 32px;">ping проверяет, работает ли соединение с другим устройством в сети, и как быстро оно отвечает</div>
+    <figure>
+        <img src="img/putty.png" alt="">
+        <figcaption>Подключение через PUTTY к серверу</figcaption>
     </figure>
     <figure>
-        <img src="whoisdev.PNG" alt="">
-        <figcaption style="font-size: 24px;">whois kubsu-dev.ru</figcaption>
-        <div style="font-size: 32px;">ping проверяет, работает ли соединение с другим устройством в сети, и как быстро оно отвечает</div>
+        <img src="img/vhod.png" alt="">
+        <figcaption>Вход на сервер под своим логином и паролем</figcaption>
+    </figure>
+    <figure>
+        <img src="img/ping.png" alt="">
+        <figcaption>ping kubsu.ru</figcaption>
+        <div>Команда ping проверяет работу с сервером kubsu.ru, отправляя ему запрос и ожидая ответ. Она показывает время, за которое приходит ответ, что помогает оценить скорость соединения.</div>
+    </figure>
+    <figure>
+        <img src="img/typeA.png" alt="">
+        <figcaption>nslookup -type=A kubsu.ru</figcaption>
+        <div>Команда nslookup с параметром -type=A запрашивает IP-адрес (тип A) домена kubsu.ru. Это помогает узнать, какой именно IP-адрес присвоен этому сайту в сети интернет.</div>
+    </figure>
+    <figure>
+        <img src="img/typeMX.png" alt="">
+        <figcaption>nslookup -type=MX kubsu.ru</figcaption>
+        <div>Команда nslookup с параметром -type=MX запрашивает записи типа MX (Mail eXchange) для домена kubsu.ru. Эти записи указывают на серверы, которые принимают электронную почту для этого домена.</div>
+    </figure>
+    <figure>
+        <img src="img/typeAdev.png" alt="">
+        <figcaption>nslookup -type=A kubsu-dev.ru</figcaption>
+    </figure>
+    <figure>
+        <img src="img/typeMXdev.png" alt="">
+        <figcaption>nslookup -type=MX kubsu-dev.ru</figcaption>
+    </figure>
+    <figure>
+        <img src="img/whois.png" alt="">
+        <figcaption>whois kubsu.ru</figcaption>
+        <div>Команда whois предоставляет информацию о владельце домена kubsu.ru, дату регистрации, контактные данные регистратора и другие технические детали, связанные с этим доменом.</div>
+    </figure>
+    <figure>
+        <img src="img/whoisdev.png" alt="">
+        <figcaption>whois kubsu-dev.ru</figcaption>
     </figure>
 </body>
 </html>
