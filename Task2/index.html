@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    body {
+        text-align: center;
+        margin: 50px 50px;
+        background-color: grey;
+    }
+
+    figure {
+        margin: 0;
+    }
+
+    figure:not(:last-child) {
+        margin-bottom: 50px;
+    }
+
+    img {
+        max-width: 100%;
+    }
+
+    figcaption {
+        margin-bottom: 5px;
+        font-size: 32px;
+        color: rgb(0, 255, 213);
+    }
+
+    div {
+        font-size: 26px;
+        color: rgb(157, 255, 0);
+    }
+</style>
+<body>
+    <figure>
+        <img src="img/1.png" alt="">
+        <figcaption>Через PUTTY на 80 порту будем отправлять GET/POST запросы на сайт: u68821.kubsu-dev.ru</figcaption>
+    </figure>
+    <figure>
+        <img src="img/2.png" alt="">
+        <figcaption>Получим главную страницу методом GET в протоколе HTTP 1.0</figcaption>
+    </figure>
+    <figure>
+        <img src="img/3.png" alt="">
+        <figcaption>Получим внутреннюю страницу методом GET в протоколе HTTP 1.1 (Host: обязателен!)</figcaption>
+        <div>Метод GET в HTTP используется для запроса данных с сервера</div>
+    </figure>
+    <figure>
+        <img src="img/4.png" alt="">
+        <figcaption>Определим размер файла file.tar.gz Метод HEAD используется для получения заголовков HTTP-ответа без передачи тела ответа</figcaption>
+        <div>Он помогает:<br>
+            • Проверить существование ресурса<br>
+            • Узнать размер файла (Content-Length)<br>
+            • Определить медиатип (Content-Type)</div>
+    </figure>
+    <figure>
+        <img src="img/5.png" alt="">
+        <figcaption>Определим медиатип ресурса /image.png</figcaption>
+    </figure>
+    <figure>
+        <img src="img/6.png" alt="">
+        <figcaption>Отправим комментарий на сервер по адресу /index.php</figcaption>
+        <div>Метод POST отправляет данные на сервер для создания или изменения ресурса</div>
+    </figure>
+    <figure>
+        <img src="img/7.png" alt="">
+        <figcaption>Получим первые 100 байт файла /file.tar.gz</figcaption>
+    </figure>
+    <figure>
+        <img src="img/8.png" alt="">
+        <figcaption>Определим кодировку ресурса /index.php</figcaption>
+    </figure>
+    <figure>
+        <img src="img/9.png" alt="">
+        <figcaption>Делаем git pull на сервере, чтобы подтянуть изменения на сайт с github</figcaption>
+    </figure>
+</body>
+</html>
