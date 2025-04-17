@@ -32,6 +32,11 @@ foreach (['fio', 'phone', 'email', 'birthdate', 'gender', 'bio', 'languages'] as
 </head>
 <body>
     <h1>Заполните форму</h1>
+    <?php if (!empty($_COOKIE['success_message'])): ?>
+        <div class="success-message"><?= htmlspecialchars($_COOKIE['success_message']) ?></div>
+        <?php setcookie('success_message', '', time() - 3600, '/'); ?>
+    <?php endif; ?>
+
     <form action="actionsWForm.php" method="POST">
         <!-- ФИО -->
         <label for="fio">ФИО:</label>

@@ -117,6 +117,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         }
     }
 } else {
+    setcookie('success_message', 'Данные успешно отправлены!', time() + 5, '/');
     header('Location: index.php');
     exit();
 }
