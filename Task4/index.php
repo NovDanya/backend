@@ -15,7 +15,7 @@ if (!empty($_COOKIE['form_errors'])) {
 }
 
 // Автозаполнение сохранёнными данными
-foreach (['fio', 'phone', 'email', 'birthdate', 'gender', 'bio', 'languages'] as $key) {
+foreach (['fio', 'phone', 'email', 'birthdate', 'gender', 'bio', 'languages', 'contract'] as $key) {
     if (!isset($form_data[$key]) && isset($_COOKIE["saved_$key"])) {
         $form_data[$key] = json_decode($_COOKIE["saved_$key"], true);
     }
