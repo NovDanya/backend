@@ -109,7 +109,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             }
 
             $pdo->commit();
-            header('Location: success.php');
+            setcookie('success_message', 'Данные успешно отправлены!', time() + 5, '/');
+            header('Location: index.php');
             exit();
         } catch (PDOException $e) {
             $pdo->rollBack();
@@ -117,7 +118,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         }
     }
 } else {
-    setcookie('success_message', 'Данные успешно отправлены!', time() + 5, '/');
     header('Location: index.php');
     exit();
 }
