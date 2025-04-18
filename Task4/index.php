@@ -2,7 +2,6 @@
 
 $form_data = [];
 $form_errors = [];
-$successMessage = '';
 
 if (!empty($_COOKIE['form_data'])) {
     $form_data = json_decode($_COOKIE['form_data'], true);
@@ -12,11 +11,6 @@ if (!empty($_COOKIE['form_data'])) {
 if (!empty($_COOKIE['form_errors'])) {
     $form_errors = json_decode($_COOKIE['form_errors'], true);
     setcookie('form_errors', '', time() - 3600, '/');
-}
-
-if (!empty($_COOKIE['success_message'])) {
-    $successMessage = $_COOKIE['success_message'];
-    setcookie('success_message', '', time() - 3600, '/');
 }
 
 // Автозаполнение
@@ -38,8 +32,8 @@ foreach (['fio', 'phone', 'email', 'birthdate', 'gender', 'bio', 'languages', 'c
 </head>
 <body>
     <h1>Заполните форму</h1>
-    <?php if (!empty($successMessage)): ?>
-        <div class="success-message"><?= htmlspecialchars($successMessage) ?></div>
+    <?php if (isset($_GET['success']) && $_GET['success'] == 1): ?>
+        <div class="success-box">Данные успешно сохранены!</div>
     <?php endif; ?>
 
     <form action="actionsWForm.php" method="POST">
