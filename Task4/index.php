@@ -33,7 +33,7 @@ foreach (['fio', 'phone', 'email', 'birthdate', 'gender', 'bio', 'languages', 'c
 <body>
     <h1>Заполните форму</h1>
     <?php if (isset($_GET['success']) && $_GET['success'] == 1): ?>
-        <div class="success-box">Данные успешно сохранены!</div>
+        <div class="success-message">Данные успешно сохранены!</div>
     <?php endif; ?>
 
     <form action="actionsWForm.php" method="POST">
