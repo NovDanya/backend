@@ -1,7 +1,5 @@
 <?php
 
-session_start();
-
 $dsn = 'mysql:host=localhost;dbname=u68821;charset=utf8';
 $username = 'u68821';
 $password = '8699290';
@@ -46,8 +44,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $errors['birthdate'] = 'Формат даты должен быть ГГГГ-ММ-ДД';
     } else {
         $age = (new DateTime())->diff($birthdateObj)->y;
-        if ($age < 12 || $age > 120) {
-            $errors['birthdate'] = 'Возраст должен быть от 12 до 120 лет';
+        if ($age < 1 || $age > 120) {
+            $errors['birthdate'] = 'Возраст должен быть от 1 до 120 лет';
         }
     }
 

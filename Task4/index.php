@@ -1,5 +1,4 @@
 <?php
-session_start();
 
 $form_data = [];
 $form_errors = [];
