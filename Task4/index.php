@@ -2,6 +2,7 @@
 
 $form_data = [];
 $form_errors = [];
+$successMessage = '';
 
 if (!empty($_COOKIE['form_data'])) {
     $form_data = json_decode($_COOKIE['form_data'], true);
@@ -13,13 +14,19 @@ if (!empty($_COOKIE['form_errors'])) {
     setcookie('form_errors', '', time() - 3600, '/');
 }
 
-// Автозаполнение сохранёнными данными
+if (!empty($_COOKIE['success_message'])) {
+    $successMessage = $_COOKIE['success_message'];
+    setcookie('success_message', '', time() - 3600, '/');
+}
+
+// Автозаполнение
 foreach (['fio', 'phone', 'email', 'birthdate', 'gender', 'bio', 'languages', 'contract'] as $key) {
     if (!isset($form_data[$key]) && isset($_COOKIE["saved_$key"])) {
         $form_data[$key] = ($key === 'languages') ? json_decode($_COOKIE["saved_$key"], true) : $_COOKIE["saved_$key"];
     }
 }
 ?>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -31,9 +38,8 @@ foreach (['fio', 'phone', 'email', 'birthdate', 'gender', 'bio', 'languages', 'c
 </head>
 <body>
     <h1>Заполните форму</h1>
-    <?php if (!empty($_COOKIE['success_message'])): ?>
-        <div class="success-message"><?= htmlspecialchars($_COOKIE['success_message']) ?></div>
-        <?php setcookie('success_message', '', time() - 3600, '/'); ?>
+    <?php if (!empty($successMessage)): ?>
+        <div class="success-message"><?= htmlspecialchars($successMessage) ?></div>
     <?php endif; ?>
 
     <form action="actionsWForm.php" method="POST">

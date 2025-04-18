@@ -106,7 +106,7 @@ if (!empty($errors)) {
         }
 
         $pdo->commit();
-        setcookie('success_message', 'Данные успешно отправлены!', time() + 5, '/');
+        setcookie('success_message', 'Данные успешно отправлены!', time() + 60, '/');
         header('Location: index.php');
         exit();
     } catch (PDOException $e) {
