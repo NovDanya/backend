@@ -159,6 +159,8 @@ option:hover {
 }
 
 p a {
+    display: block;
+    margin: 0 auto;
     color: #3498db;
     text-decoration: none;
 }
