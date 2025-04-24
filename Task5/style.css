@@ -158,9 +158,12 @@ option:hover {
     margin-bottom: 10px;
 }
 
-p a {
+p {
     display: block;
     margin: 0 auto;
+}
+
+p a {
     color: #3498db;
     text-decoration: none;
 }
