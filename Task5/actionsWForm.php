@@ -6,8 +6,8 @@ function validateFormData($data) {
     $errors = [];
 
     // Валидация ФИО
-    if (empty($data['fio']) || !preg_match('/^[А-ЯЁ][а-яё]+ [А-ЯЁ][а-яё]+ [А-ЯЁ][а-яё]+$/', $data['fio'])) {
-        $errors['fio'] = 'Введите корректное ФИО (Фамилия Имя Отчество)';
+    if (empty($data['fio']) || !preg_match('/^[а-яА-ЯёЁa-zA-Z\s\-]+$/u', $data['fio'])) {
+        $errors['fio'] = 'ФИО должно содержать только буквы, пробелы и дефис';
     }
 
     // Валидация телефона
