@@ -1,9 +1,11 @@
 <?php
 session_start();
 
+// Инициализация переменных
 $form_data = [];
 $form_errors = [];
 
+// Проверка и очистка cookies с ошибками и данными
 if (!empty($_COOKIE['form_data'])) {
     $form_data = json_decode($_COOKIE['form_data'], true);
     setcookie('form_data', '', time() - 3600, '/');
@@ -14,7 +16,7 @@ if (!empty($_COOKIE['form_errors'])) {
     setcookie('form_errors', '', time() - 3600, '/');
 }
 
-// Автозаполнение из cookies для неавторизованных
+// Автозаполнение из cookies для неавторизованных пользователей
 if (!isset($_SESSION['user_id'])) {
     foreach (['fio', 'phone', 'email', 'birthdate', 'gender', 'bio', 'languages', 'contract'] as $key) {
         if (!isset($form_data[$key]) && isset($_COOKIE["saved_$key"])) {
@@ -31,14 +33,17 @@ if (isset($_SESSION['user_id'])) {
         $password = '8699290';
         $pdo = new PDO($dsn, $username, $password, [PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION]);
 
+        // Получение заявки пользователя
         $stmt = $pdo->prepare("SELECT * FROM applications WHERE id = (SELECT application_id FROM users WHERE id = ?)");
         $stmt->execute([$_SESSION['user_id']]);
         $app = $stmt->fetch(PDO::FETCH_ASSOC);
 
+        // Получение выбранных языков
         $stmt = $pdo->prepare("SELECT language_id FROM application_languages WHERE application_id = ?");
         $stmt->execute([$app['id']]);
         $langs = $stmt->fetchAll(PDO::FETCH_COLUMN);
 
+        // Подготовка данных для формы
         $form_data = [
             'fio' => $app['name'],
             'phone' => $app['phone'],
