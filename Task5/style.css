@@ -158,9 +158,12 @@ option:hover {
     margin-bottom: 10px;
 }
 
+p {
+    text-align: center;
+}
+
 p a {
     color: #3498db;
-    text-align: center;
     text-decoration: none;
 }
 
