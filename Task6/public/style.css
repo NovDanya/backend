@@ -2,10 +2,10 @@ body {
     font-family: 'Arial', sans-serif;
     line-height: 1.6;
     color: #333;
-    max-width: 800px;
     margin: 0 auto;
     padding: 20px;
     background-color: #f5f5f5;
+    /* Убрали max-width: 800px, чтобы не ограничивать ширину */
 }
 
 h1 {
@@ -20,6 +20,8 @@ form {
     padding: 30px;
     border-radius: 8px;
     box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+    max-width: 800px; /* Форма остаётся ограниченной по ширине */
+    margin: 0 auto; /* Центрируем форму */
 }
 
 label {
@@ -171,18 +173,27 @@ p a:hover {
     text-decoration: underline;
 }
 
+/* Стили для таблицы */
+.table-container {
+    width: 100%;
+    overflow-x: auto; /* Добавляем горизонтальную прокрутку */
+    margin: 20px auto; /* Центрируем контейнер */
+    max-width: 1200px; /* Ограничиваем максимальную ширину таблицы */
+}
+
 table {
     width: 100%;
     border-collapse: collapse;
-    margin: 20px 0;
     background-color: white;
     box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+    margin: 0 auto; /* Центрируем таблицу */
 }
 
 th, td {
     padding: 12px;
     text-align: left;
     border: 1px solid #ddd;
+    white-space: nowrap; /* Предотвращаем перенос текста */
 }
 
 th {
