@@ -176,17 +176,17 @@ p a:hover {
 /* Стили для таблицы */
 .table-container {
     width: 100%;
-    overflow-x: auto; /* Добавляем горизонтальную прокрутку */
-    margin: 20px auto; /* Центрируем контейнер */
-    max-width: 1200px; /* Ограничиваем максимальную ширину таблицы */
+    max-width: 1200px; /* Ограничиваем ширину */
+    margin: 20px auto; /* Центрируем */
+    overflow-x: auto; /* Горизонтальная прокрутка */
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
 }
 
 table {
     width: 100%;
     border-collapse: collapse;
     background-color: white;
-    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
-    margin: 0 auto; /* Центрируем таблицу */
+    min-width: 600px; /* Минимальная ширина для читаемости */
 }
 
 th, td {
@@ -199,6 +199,11 @@ th, td {
 th {
     background-color: #3498db;
     color: white;
+    font-weight: bold;
+}
+
+td {
+    vertical-align: middle;
 }
 
 tr:nth-child(even) {
