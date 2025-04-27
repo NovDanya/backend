@@ -141,7 +141,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <label for="languages">Языки программирования:</label>
         <select id="languages" name="languages[]" multiple class="<?= isset($form_errors['languages']) ? 'error' : '' ?>">
             <?php
-            $stmt = $pdo->query("SELECT id, name FROM languages");
+            $stmt = $pdo->query("SELECT id, name FROM programming_languages");
             $languages = $stmt->fetchAll(PDO::FETCH_KEY_PAIR);
             $selectedLangs = $form_data['languages'] ?? [];
             foreach ($languages as $id => $name):

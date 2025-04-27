@@ -1,14 +1,12 @@
 <?php
+
 session_start();
+require_once __DIR__ . '/../includes/db_connect.php';
 
 $error = '';
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     try {
-        $dsn = 'mysql:host=localhost;dbname=u68821;charset=utf8';
-        $username = 'u68821';
-        $password = '8699290';
-        $pdo = new PDO($dsn, $username, $password, [PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION]);
-
+        $pdo = getDbConnection();
         $login = trim($_POST['login'] ?? '');
         $password = $_POST['password'] ?? '';
 

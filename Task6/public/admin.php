@@ -11,19 +11,17 @@ if (!isset($_SESSION['admin_id'])) {
 try {
     $pdo = getDbConnection();
 
-    // Получение всех заявок
-    $stmt = $pdo->query("SELECT a.*, GROUP_CONCAT(l.name) as languages
+    $stmt = $pdo->query("SELECT a.*, GROUP_CONCAT(pl.name) as languages
                          FROM applications a
                          LEFT JOIN application_languages al ON a.id = al.application_id
-                         LEFT JOIN languages l ON al.language_id = l.id
+                         LEFT JOIN programming_languages pl ON al.language_id = pl.id
                          GROUP BY a.id");
     $applications = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-    // Получение статистики по языкам
-    $stmt = $pdo->query("SELECT l.name, COUNT(al.application_id) as count
-                         FROM languages l
-                         LEFT JOIN application_languages al ON l.id = al.language_id
-                         GROUP BY l.id");
+    $stmt = $pdo->query("SELECT pl.name, COUNT(al.application_id) as count
+                         FROM programming_languages pl
+                         LEFT JOIN application_languages al ON pl.id = al.language_id
+                         GROUP BY pl.id");
     $stats = $stmt->fetchAll(PDO::FETCH_ASSOC);
 } catch (PDOException $e) {
     die('Ошибка подключения: ' . $e->getMessage());
