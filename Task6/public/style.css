@@ -5,7 +5,7 @@ body {
     margin: 0 auto;
     padding: 20px;
     background-color: #f5f5f5;
-    /* Убрали max-width: 800px, чтобы не ограничивать ширину */
+    text-align: center;
 }
 
 h1 {
