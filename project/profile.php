@@ -51,7 +51,7 @@ if (!empty($_SESSION['login'])) {
         <p><strong>Email:</strong> <?php echo htmlspecialchars($data['email']); ?></p>
         <p><strong>Комментарий:</strong> <?php echo htmlspecialchars($data['comment']); ?></p>
         <?php if (!empty($_SESSION['login'])): ?>
-            <a href="/8LAB/index.php">Редактировать</a>
+            <a href="index.php">Редактировать</a>
         <?php endif; ?>
     </div>
 </body>

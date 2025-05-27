@@ -124,7 +124,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
             $pass_hash = password_hash($pass, PASSWORD_BCRYPT);
             $stmt->execute([$login, $pass_hash, $_POST['fio'], $_POST['phone'], $_POST['email'], $_POST['bio']]);
 
-            $profile_url = "/profile.php?id=" . $db->lastInsertId();
+            $profile_url = "profile.php?id=" . $db->lastInsertId();
             $stmt = $db->prepare("INSERT INTO drupal_profiles (user_id, profile_url) VALUES (?, ?)");
             $stmt->execute([$db->lastInsertId(), $profile_url]);
 

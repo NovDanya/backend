@@ -25,6 +25,7 @@ export function initFormSubmission() {
 
     const formData = new FormData(feedbackForm);
     const data = Object.fromEntries(formData);
+    data.languages = formData.getAll("languages[]");
 
     const errors = validateForm(data);
     if (Object.keys(errors).length > 0) {
@@ -134,8 +135,15 @@ export function initFormSubmission() {
         document.getElementById("fio").value = result.fio;
         document.getElementById("tel").value = result.phone;
         document.getElementById("email").value = result.email;
-        document.getElementById("bio").value = result.comment;
-        document.getElementById("contract").checked = true;
+        document.getElementById("dob").value = result.dob;
+        document.getElementById("gender").value = result.gender;
+        document.getElementById("bio").value = result.bio;
+        document.getElementById("contract").checked = result.contract;
+
+        const languagesSelect = document.getElementById("languages");
+        Array.from(languagesSelect.options).forEach((option) => {
+          option.selected = result.languages.includes(option.value);
+        });
       } else {
         errorMessage.textContent = result.error || "Ошибка загрузки данных";
         errorMessage.style.display = "block";
@@ -148,14 +156,27 @@ export function initFormSubmission() {
 
   function validateForm(data) {
     const errors = {};
-    if (!data.fio) {
-      errors.fio = "Заполните ФИО";
+    if (!data.fio || !/^[a-zA-Zа-яА-Я\s]{1,150}$/u.test(data.fio)) {
+      errors.fio = "Некорректное ФИО";
     }
-    if (!data.phone) {
-      errors.phone = "Заполните телефон";
+    if (!data.phone || !/^\+?\d{10,15}$/.test(data.phone)) {
+      errors.phone = "Некорректный телефон";
     }
-    if (!data.email) {
-      errors.email = "Заполните email";
+    if (!data.email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(data.email)) {
+      errors.email = "Некорректный email";
+    }
+    if (!data.dob) {
+      errors.dob = "Некорректная дата рождения";
+    }
+    if (!data.gender || !["male", "female"].includes(data.gender)) {
+      errors.gender = "Выберите пол";
+    }
+    if (
+      !data.languages ||
+      !Array.isArray(data.languages) ||
+      data.languages.length === 0
+    ) {
+      errors.languages = "Выберите хотя бы один язык";
     }
     if (!data.bio) {
       errors.bio = "Заполните биографию";
