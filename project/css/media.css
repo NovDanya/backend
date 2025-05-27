@@ -136,33 +136,33 @@
     font-family: Montserrat;
     font-size: 10px;
     color: #fff;
-    position: relative;
-    text-decoration: none;
+    position: relative; 
+    text-decoration: none; 
 
   }
    .nav__link-hover:after {
-    content: "";
+    content: ""; 
     display: block;
     position: absolute;
     left: 0;
     bottom: -1px;
-    width: 100%;
-    height: 2px;
-    background-color: #f14d34;
-    transform: scaleX(0);
-    transition: transform 0.3s ease;
+    width: 100%; 
+    height: 2px; 
+    background-color: #f14d34; 
+    transform: scaleX(0); 
+    transition: transform 0.3s ease; 
 }
 
 .nav__link-hover:hover:after {
-    transform: scaleX(1);
+    transform: scaleX(1); 
 }
 .dropbtn {
     font-family: Montserrat;
     font-size: 10px;
     color: #fff;
-    background: none;
-    border: none;
-    cursor: pointer;
+    background: none; 
+    border: none; 
+    cursor: pointer; 
 }
 
 .dropdown {
@@ -170,11 +170,11 @@
 }
 
 .dropdown__list {
-    display: none;
-    position: absolute;
+    display: none; 
+    position: absolute; 
     background-color: #f14d34;
     min-width: 160px;
-    z-index: 1000;
+    z-index: 1000; 
 }
 
 .dropdown:hover .dropdown__list {
@@ -890,12 +890,6 @@
       ),
       url("../img/D-flying.svg") no-repeat top center/100% 13%,
       url("../img/D.png") no-repeat bottom right/24% 7%, #040613;
-  }
-}
-
-@media (max-width: 767px) {
-  .footer {
-    margin-bottom: 40px;
   }
 }
 
