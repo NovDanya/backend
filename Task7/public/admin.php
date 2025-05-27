@@ -3,9 +3,6 @@ session_start(); // Для CSRF-токенов
 require_once __DIR__ . '/../includes/db_connect.php';
 require_once __DIR__ . '/../includes/utils.php';
 
-// Уникальный realm с временной меткой для принудительного запроса авторизации
-$realm = 'Admin access ' . time();
-
 // Защитные заголовки
 header("Content-Security-Policy: default-src 'self'; script-src 'self'; style-src 'self';");
 header("X-Content-Type-Options: nosniff");
