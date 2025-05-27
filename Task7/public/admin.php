@@ -1,6 +1,5 @@
 <?php
-
-session_start();
+session_start(); // Для CSRF-токенов
 require_once __DIR__ . '/../includes/db_connect.php';
 require_once __DIR__ . '/../includes/utils.php';
 
@@ -9,15 +8,31 @@ header("Content-Security-Policy: default-src 'self'; script-src 'self'; style-sr
 header("X-Content-Type-Options: nosniff");
 header("X-Frame-Options: DENY");
 
-if (!isset($_SESSION['admin_id'])) {
-    header('Location: admin_login.php');
+// HTTP-авторизация
+try {
+    $pdo = getDbConnection();
+    $stmt = $pdo->prepare("SELECT login, password_hash FROM admins WHERE login = ?");
+    $stmt->execute([$_SERVER['PHP_AUTH_USER'] ?? '']);
+    $admin = $stmt->fetch(PDO::FETCH_ASSOC);
+
+    if (empty($_SERVER['PHP_AUTH_USER']) ||
+        empty($_SERVER['PHP_AUTH_PW']) ||
+        !$admin ||
+        !password_verify($_SERVER['PHP_AUTH_PW'], $admin['password_hash'])) {
+        header('HTTP/1.1 401 Unauthorized');
+        header('WWW-Authenticate: Basic realm="Admin access"');
+        print('<h1>401 Требуется авторизация</h1>');
+        exit();
+    }
+} catch (PDOException $e) {
+    error_log("Auth error in admin.php: " . $e->getMessage());
+    header('HTTP/1.1 500 Internal Server Error');
+    print('<h1>500 Ошибка сервера</h1>');
     exit();
 }
 
+// Получение заявок с языками
 try {
-    $pdo = getDbConnection();
-
-    // Получение всех заявок с языками
     $stmt = $pdo->query("
         SELECT a.*, GROUP_CONCAT(pl.name SEPARATOR ', ') as languages
         FROM applications a
@@ -49,12 +64,12 @@ try {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-Content-Type-Options" content="nosniff">
     <meta http-equiv="X-Frame-Options" content="DENY">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="/public/style.css?v=<?= time() ?>">
     <title>Панель администратора</title>
 </head>
 <body>
     <h1>Панель администратора</h1>
-    <p>Вы вошли как: <?= htmlspecialchars($_SESSION['admin_login']) ?> | <a href="logout.php">Выйти</a></p>
+    <p>Вы вошли как: <?= htmlspecialchars($_SERVER['PHP_AUTH_USER']) ?></p>
 
     <h2>Список заявок</h2>
     <div class="table-container">
