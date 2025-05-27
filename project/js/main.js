@@ -50,7 +50,10 @@ export function initFormSubmission() {
                 console.log('Headers:', Object.fromEntries(response.headers));
                 const text = await response.text();
                 console.log('Response text:', text.substring(0, 200)); // Первые 200 символов
-                const result = await response.json();
+                if (!response.ok) {
+                    throw new Error(`HTTP ${response.status}: ${text}`);
+                }
+                const result = JSON.parse(text); // Парсим JSON
 
                 if (response.ok) {
                     if (token) {
