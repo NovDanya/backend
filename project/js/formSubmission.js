@@ -35,7 +35,7 @@ export function initFormSubmission() {
     }
 
     const isAuthenticated = !!sessionStorage.getItem("user");
-    const url = "/8LAB/api.php";
+    const url = "/api.php";
     const method = isAuthenticated ? "PUT" : "POST";
     const action = isAuthenticated
       ? {
@@ -86,7 +86,7 @@ export function initFormSubmission() {
     const data = Object.fromEntries(formData);
 
     try {
-      const response = await fetch("/8LAB/api.php", {
+      const response = await fetch("/api.php", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -121,7 +121,7 @@ export function initFormSubmission() {
   async function loadUserData(applicationId) {
     try {
       const response = await fetch(
-        `/8LAB/api.php?action=get&id=${applicationId}`,
+        `/api.php?action=get&id=${applicationId}`,
         {
           method: "GET",
           headers: { "Content-Type": "application/json" },
@@ -135,8 +135,6 @@ export function initFormSubmission() {
         document.getElementById("fio").value = result.fio;
         document.getElementById("tel").value = result.phone;
         document.getElementById("email").value = result.email;
-        document.getElementById("dob").value = result.dob;
-        document.getElementById("gender").value = result.gender;
         document.getElementById("bio").value = result.bio;
         document.getElementById("contract").checked = result.contract;
 
@@ -164,19 +162,6 @@ export function initFormSubmission() {
     }
     if (!data.email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(data.email)) {
       errors.email = "Некорректный email";
-    }
-    if (!data.dob) {
-      errors.dob = "Некорректная дата рождения";
-    }
-    if (!data.gender || !["male", "female"].includes(data.gender)) {
-      errors.gender = "Выберите пол";
-    }
-    if (
-      !data.languages ||
-      !Array.isArray(data.languages) ||
-      data.languages.length === 0
-    ) {
-      errors.languages = "Выберите хотя бы один язык";
     }
     if (!data.bio) {
       errors.bio = "Заполните биографию";
