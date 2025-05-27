@@ -64,7 +64,7 @@ try {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-Content-Type-Options" content="nosniff">
     <meta http-equiv="X-Frame-Options" content="DENY">
-    <link rel="stylesheet" href="/public/style.css?v=<?= time() ?>">
+    <link rel="stylesheet" href="style.css?v=<?= time() ?>">
     <title>Панель администратора</title>
 </head>
 <body>
