@@ -46,7 +46,10 @@ export function initFormSubmission() {
                     headers,
                     body: JSON.stringify({ fio, phone, email, comment, agree: true })
                 });
-
+                console.log('Status:', response.status);
+                console.log('Headers:', Object.fromEntries(response.headers));
+                const text = await response.text();
+                console.log('Response text:', text.substring(0, 200)); // Первые 200 символов
                 const result = await response.json();
 
                 if (response.ok) {
@@ -66,9 +69,9 @@ export function initFormSubmission() {
                     errorMessage.style.display = 'block';
                 }
             } catch (error) {
-                errorMessage.textContent = 'Ошибка сети. Попробуйте снова.';
-                errorMessage.style.display = 'block';
-                console.error('Ошибка:', error);
+              console.error('Fetch error:', error);
+              errorMessage.textContent = `Ошибка сети: ${error.message}`;
+              errorMessage.style.display = 'block';
             }
         });
     }
