@@ -3,6 +3,9 @@
 session_start();
 require_once __DIR__ . '/../includes/db_connect.php';
 
+// Уникальный realm с временной меткой для принудительного запроса авторизации
+$realm = 'Admin access ' . time();
+
 // HTTP-авторизация
 try {
     $pdo = getDbConnection();
