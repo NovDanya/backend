@@ -1,5 +1,4 @@
 <?php
-
 session_start();
 require_once __DIR__ . '/../includes/db_connect.php';
 require_once __DIR__ . '/../includes/validate.php';
@@ -79,7 +78,7 @@ if (isset($_SESSION['user_id'])) {
     <?php if (isset($_SESSION['user_id'])): ?>
         <p>Вы вошли как: <?= htmlspecialchars($_SESSION['login']) ?> | <a href="logout.php">Выйти</a></p>
     <?php else: ?>
-        <p><a href="login.php">Войти</a> | <a href="admin_login.php">Вход для администратора</a></p>
+        <p><a href="login.php">Войти</a></p>
     <?php endif; ?>
 
     <form action="actions.php" method="POST">
